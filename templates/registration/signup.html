@@ -1,26 +1,15 @@
 {% extends "layout.html" %}
+{% load crispy_forms_tags %}
 
 {% block content%}
 <center>
-    <form method="post">
+    <form method="post" class="form form-signin m-5 p-4" style="  width: 100%; max-width: 480px;border: 1px solid; border-radius: 4px;">
         {% csrf_token %}
-        {% for field in form %}
-            {{ field.label_tag }}
-            {{ field }}
-            <br/>
-
-            {% if field.help_text %}
-            <small><i style="color: grey">{{ field.help_text }}</i></small><br/>
-            {% endif %}
-            
-            {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
-            {% endfor %}
-        {% endfor %}
+        {{ form|crispy }}
         
         <div class="section"></div>
 
-        <button type="submit" class="btn">Sign up</button>
+        <button type="submit" class="btn btn-primary btn-block">Sign up</button>
     </form>
     <div class="section"></div>
 </center>
