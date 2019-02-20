@@ -8,6 +8,6 @@ urlpatterns = [
     url('^$', include('posts.urls')),
     path('admin/', admin.site.urls),
     path('posts/', include('posts.urls')),
-    path('account/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     url(r'^signup/$', signup_page_view, name='signup'),
 ]

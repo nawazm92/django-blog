@@ -1,13 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 from .models import Posts
+from .forms import PostForm
 
 # Create your views here.
 def index(request):
-    # return HttpResponse('Hello Folks!')
-
     posts = Posts.objects.all().order_by('-created_at')
     page = request.GET.get('page', 1)
 
@@ -36,5 +36,16 @@ def details(request, id):
 
     return render(request, 'posts/details.html', context)
 
-def about(request):
-    return render(request, 'posts/about.html')
+@login_required
+def create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            
+            return redirect('/')
+    else:
+        form = PostForm()
+
+    return render(request, 'posts/create.html', {'form': form}) 
