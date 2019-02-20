@@ -2,9 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm
 
-def about_page_view(request):
-    return render(request, 'about.html')
-
 def signup_page_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -16,7 +13,7 @@ def signup_page_view(request):
             user = authenticate(username=username, password=raw_password)
             login(request, user)
             
-            return redirect('home')
+            return redirect('/')
     else:
         form = SignUpForm()
     

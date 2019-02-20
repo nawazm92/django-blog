@@ -2,32 +2,32 @@
 
 {% block content%}
     {% for post in posts %}
-        <h4>{{ post.title }}</h4>
-        Written By: John Doe, 20th Jun 2018
+        <a href="/posts/{{post.id}}"><h4>{{ post.title }}</h4></a>
+        <small><i>Written By: John Doe, {{post.created_at|date:"d M Y" }}</i></small>
         <p>{{ post.body|slice:"0:200" }}...</p>
-        <a href="/posts/{{post.id}}" class="btn">Read More</a>
+        <a href="/posts/{{post.id}}" class="btn btn-link">Read More</a>
         <hr class="liner"/>
     {% endfor %}
 
     {% if posts.has_other_pages %}
-    <div class="center-align">
+    <div class="d-flex justify-content-center">
         <ul class="pagination">
             {% if posts.has_previous %}
-                <li class="waves-effect"><a href="?page={{ posts.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                <li class="page-item"><a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a></li>
             {% else %}
-                <li class="disabled"><i class="material-icons">chevron_left</i></li>
+                <li class="page-item disabled"><a class="page-link" href="javascript:;">&laquo;</a></li>
             {% endif %}
             {% for i in posts.paginator.page_range %}
                 {% if posts.number == i %}
-                <li class="active"><a href="javascript:;">{{ i }}</a></li>
+                <li class="page-item active"><a href="javascript:;" class="page-link">{{ i }}</a></li>
                 {% else %}
-                <li class="waves-effect"><a href="?page={{ i }}">{{ i }}</a></li>
+                <li class="page-item"><a href="?page={{ i }}" class="page-link">{{ i }}</a></li>
                 {% endif %}
             {% endfor %}
             {% if posts.has_next %}
-                <li class="waves-effect"><a href="?page={{ posts.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                <li class="page-item"><a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</i></a></li>
             {% else %}
-                <li class="disabled"><i class="material-icons">chevron_right</i></li>
+                <li class="page-item disabled"><a class="page-link" href="javascript:;">&raquo;</a></li>
             {% endif %}
         </ul>
     </div>

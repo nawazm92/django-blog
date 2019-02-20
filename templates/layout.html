@@ -40,21 +40,22 @@
                 </ul>
 
                 <ul class="navbar-nav">
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown float-right">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
-                    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-                        <a class="dropdown-item" href="javascript:;">Profile</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    </div>
-                </li>
-                {% else %}
-                <li class="nav-item float-right"><a href="/account/login" class="nav-link">Login</a></li>
-                <li class="nav-item float-right"><a href="/signup" class="nav-link">Sign Up</a></li>
-                {% endif %}
+                    <li class="nav-item float-right"><a href="/posts/create" class="btn btn-info nav-link">Create Post</a></li>
 
-                </ul>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown float-right">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <a class="dropdown-item" href="javascript:;">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item float-right"><a href="/account/login" class="nav-link">Login</a></li>
+                    <li class="nav-item float-right"><a href="/signup" class="nav-link">Sign Up</a></li>
+                    {% endif %}
+                   </ul>
             </div>
         </div>
     </nav>
