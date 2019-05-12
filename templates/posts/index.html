@@ -5,7 +5,7 @@
         <a href="/posts/{{post.id}}"><h4>{{ post.title }}</h4></a>
         <small><i>Written By: John Doe, {{post.created_at|date:"d M Y" }}</i></small>
         <p>{{ post.body|slice:"0:200" }}...</p>
-        <a href="/posts/{{post.id}}" class="btn btn-link">Read More</a>
+        <a href="/posts/{{post.id}}" class="btn btn-info">Read More...</a>
         <hr class="liner"/>
     {% endfor %}
 

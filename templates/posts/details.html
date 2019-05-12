@@ -2,14 +2,16 @@
 
 {% block content%}
 <div class="card">
-    <div class="card-content">
-        <span class="card-title">{{ post.title }}</span>
+    <img src="https://picsum.photos/1000/300" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h2 class="card-title">{{ post.title }}</h2>
         <i>Published {{ post.created_at }}</i>
         <hr class="liner" />    
         {{ post.body }}
     </div>
     <div class="card-action">
-        <a href="/posts" class="btn"><i class="material-icons left">chevron_left</i> Go Back!</a>
+        <a href="javascript:;" class="btn btn-info">Previous post</a>
+        <a href="javascript:;" class="btn btn-info float-right">Next post</a>
     </div>
 </div>
 {% endblock %}

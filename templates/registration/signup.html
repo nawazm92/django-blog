@@ -3,7 +3,9 @@
 
 {% block content%}
 <center>
-    <form method="post" class="form form-signin m-5 p-4" style="  width: 100%; max-width: 480px;border: 1px solid; border-radius: 4px;">
+    <h3>Create an account</h3>
+
+    <form method="post" class="form form-signup m-5 p-4 text-left" style="max-width: 480px;box-shadow: 0 5px 15px rgba(0,0,0,.15)">
         {% csrf_token %}
         {{ form|crispy }}
         
@@ -11,5 +13,7 @@
 
         <button type="submit" class="btn btn-primary btn-block">Sign up</button>
     </form>
+
+    Already have an account? <a href="{% url 'login' %}">Login</a>
 </center>
 {% endblock %}
