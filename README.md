@@ -9,7 +9,7 @@ Django simple blog
 
 > Create database in mysql and update db name in settings.py
 
-``` json
+``` javascript
 DATABASES = {
     'default' : {
         ...
