@@ -4,7 +4,7 @@
 {% block content%}
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
-            <form method="POST" class="post-form col-9 mt-2 mb-5">
+            <form method="POST" class="post-form col-9 mt-2 mb-5" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit" class="btn btn-primary btn-save">Publish</button>
